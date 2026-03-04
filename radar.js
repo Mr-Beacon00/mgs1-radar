@@ -405,3 +405,37 @@ isWarning.onchange = function() {
 
 init();
 checkType();
+
+function preloadImages(urls) {
+    urls.forEach(url => {
+        const img = new Image();
+        img.src = url;
+    });
+}
+
+const imageUrls = [
+    // banners
+    'layers/warning.png',
+    'layers/jamming.png',
+    'layers/escape.png',
+    'layers/evasion_fix.png',
+    'layers/danger_fix.png',
+    'layers/alert.png',
+    // static layers
+    'layers/layer1.png',
+    'layers/layer2.png',
+    'layers/layer3.png',
+    'layers/layer4.png',
+    document.getElementById('dotsImg').src,
+    // digits 0-9
+    ...Array.from({ length: 10 }, (_, i) => `digits/${i}.png`),
+    // warning digits 0-9
+    ...Array.from({ length: 10 }, (_, i) => `warning_digits/${i}.png`),
+    // warning ms digits 0-9
+    ...Array.from({ length: 10 }, (_, i) => `warning_digits/ms${i}.png`)
+];
+
+window.addEventListener('load', () => {
+    preloadImages(imageUrls);
+});
+
